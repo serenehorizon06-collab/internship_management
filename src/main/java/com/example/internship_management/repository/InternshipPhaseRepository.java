@@ -9,4 +9,6 @@ public interface InternshipPhaseRepository extends JpaRepository<InternshipPhase
 	boolean existsByPhaseName(String phaseName);
 
 	Optional<InternshipPhase> findByPhaseName(String phaseName);
+
+	boolean existsByPhaseNameAndPhaseIdNot(String phaseName, Integer phaseId);
 }

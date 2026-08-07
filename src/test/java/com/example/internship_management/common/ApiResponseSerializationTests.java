@@ -6,6 +6,7 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import com.example.internship_management.exception.ErrorCode;
 import com.example.internship_management.repository.InternshipAssignmentRepository;
+import com.example.internship_management.repository.InternshipPhaseRepository;
 import com.example.internship_management.repository.MentorRepository;
 import com.example.internship_management.repository.StudentRepository;
 import com.example.internship_management.repository.UserRepository;
@@ -34,6 +35,9 @@ class ApiResponseSerializationTests {
 
 	@MockitoBean
 	private MentorRepository mentorRepository;
+
+	@MockitoBean
+	private InternshipPhaseRepository internshipPhaseRepository;
 
 	@Autowired
 	private ObjectMapper objectMapper;

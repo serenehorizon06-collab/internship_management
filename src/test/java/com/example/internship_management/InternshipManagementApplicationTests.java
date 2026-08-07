@@ -5,6 +5,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.bean.override.mockito.MockitoBean;
 import org.springframework.test.context.ActiveProfiles;
 import com.example.internship_management.repository.InternshipAssignmentRepository;
+import com.example.internship_management.repository.InternshipPhaseRepository;
 import com.example.internship_management.repository.MentorRepository;
 import com.example.internship_management.repository.StudentRepository;
 import com.example.internship_management.repository.UserRepository;
@@ -24,6 +25,9 @@ class InternshipManagementApplicationTests {
 
 	@MockitoBean
 	private MentorRepository mentorRepository;
+
+	@MockitoBean
+	private InternshipPhaseRepository internshipPhaseRepository;
 
 	@Test
 	void contextLoads() {
