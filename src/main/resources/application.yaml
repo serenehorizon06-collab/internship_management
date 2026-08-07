@@ -10,3 +10,8 @@ spring:
     hibernate:
       ddl-auto: ${JPA_DDL_AUTO:validate}
     open-in-view: false
+
+app:
+  jwt:
+    secret: ${JWT_SECRET:CHANGE_ME_TO_A_LONG_SECRET_FOR_LOCAL_DEV_ONLY}
+    expiration-ms: ${JWT_EXPIRATION_MS:86400000}
