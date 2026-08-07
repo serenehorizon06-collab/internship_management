@@ -9,4 +9,6 @@ public interface EvaluationCriterionRepository extends JpaRepository<EvaluationC
 	boolean existsByCriterionName(String criterionName);
 
 	Optional<EvaluationCriterion> findByCriterionName(String criterionName);
+
+	boolean existsByCriterionNameAndCriterionIdNot(String criterionName, Integer criterionId);
 }

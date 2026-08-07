@@ -4,6 +4,7 @@ import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.bean.override.mockito.MockitoBean;
 import org.springframework.test.context.ActiveProfiles;
+import com.example.internship_management.repository.EvaluationCriterionRepository;
 import com.example.internship_management.repository.InternshipAssignmentRepository;
 import com.example.internship_management.repository.InternshipPhaseRepository;
 import com.example.internship_management.repository.MentorRepository;
@@ -28,6 +29,9 @@ class InternshipManagementApplicationTests {
 
 	@MockitoBean
 	private InternshipPhaseRepository internshipPhaseRepository;
+
+	@MockitoBean
+	private EvaluationCriterionRepository evaluationCriterionRepository;
 
 	@Test
 	void contextLoads() {
