@@ -41,6 +41,7 @@ public class SecurityConfig {
 						.accessDeniedHandler(restAccessDeniedHandler))
 				.authorizeHttpRequests(authorize -> authorize
 						.requestMatchers(HttpMethod.POST, "/api/auth/login").permitAll()
+						.requestMatchers("/api/users", "/api/users/**").hasRole("ADMIN")
 						.requestMatchers("/api/auth/me").authenticated()
 						.requestMatchers("/api/**").authenticated()
 						.anyRequest().permitAll())

@@ -9,6 +9,7 @@ import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.AccessDeniedException;
+import org.springframework.http.converter.HttpMessageNotReadableException;
 import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
@@ -65,6 +66,16 @@ public class GlobalExceptionHandler {
 				HttpStatus.BAD_REQUEST.value(),
 				ErrorCode.DUPLICATE_RESOURCE,
 				"Dữ liệu bị trùng hoặc vi phạm ràng buộc toàn vẹn",
+				List.of());
+		return ResponseEntity.badRequest().body(response);
+	}
+
+	@ExceptionHandler(HttpMessageNotReadableException.class)
+	public ResponseEntity<ErrorResponse> handleHttpMessageNotReadable() {
+		ErrorResponse response = new ErrorResponse(
+				HttpStatus.BAD_REQUEST.value(),
+				ErrorCode.INVALID_INPUT_DATA,
+				INVALID_INPUT_MESSAGE,
 				List.of());
 		return ResponseEntity.badRequest().body(response);
 	}
