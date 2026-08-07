@@ -17,14 +17,14 @@ class EvaluationCriterionResponseSerializationTests {
 	void evaluationCriterionResponseOnlyExposesDtoFields() throws Exception {
 		EvaluationCriterion criterion = new EvaluationCriterion();
 		criterion.setCriterionId(1);
-		criterion.setCriterionName("ThĂ¡i Ä‘á»™ lĂ m viá»‡c");
-		criterion.setDescription("ÄĂ¡nh giĂ¡ thĂ¡i Ä‘á»™ vĂ  trĂ¡ch nhiá»‡m");
+		criterion.setCriterionName("Thái độ làm việc");
+		criterion.setDescription("Đánh giá thái độ và trách nhiệm");
 		criterion.setMaxScore(new BigDecimal("10.00"));
 
 		JsonNode json = objectMapper.readTree(objectMapper.writeValueAsString(EvaluationCriterionResponse.from(criterion)));
 
 		assertEquals(1, json.get("criterionId").asInt());
-		assertEquals("ThĂ¡i Ä‘á»™ lĂ m viá»‡c", json.get("criterionName").asText());
+		assertEquals("Thái độ làm việc", json.get("criterionName").asText());
 		assertEquals(10.00, json.get("maxScore").asDouble());
 		assertFalse(json.has("hibernateLazyInitializer"));
 		assertFalse(json.has("handler"));

@@ -12,13 +12,13 @@ import lombok.Setter;
 @Setter
 public class CreateEvaluationCriterionRequest {
 
-	@NotBlank(message = "TĂªn tiĂªu chĂ­ Ä‘Ă¡nh giĂ¡ khĂ´ng Ä‘Æ°á»£c Ä‘á»ƒ trá»‘ng")
-	@Size(max = 200, message = "TĂªn tiĂªu chĂ­ Ä‘Ă¡nh giĂ¡ khĂ´ng Ä‘Æ°á»£c vÆ°á»£t quĂ¡ 200 kĂ½ tá»±")
+	@NotBlank(message = "Tên tiêu chí đánh giá không được để trống")
+	@Size(max = 200, message = "Tên tiêu chí đánh giá không được vượt quá 200 ký tự")
 	private String criterionName;
 
 	private String description;
 
-	@NotNull(message = "Äiá»ƒm tá»‘i Ä‘a khĂ´ng Ä‘Æ°á»£c Ä‘á»ƒ trá»‘ng")
-	@DecimalMin(value = "0.0", inclusive = false, message = "Äiá»ƒm tá»‘i Ä‘a pháº£i lá»›n hÆ¡n 0")
+	@NotNull(message = "Điểm tối đa không được để trống")
+	@DecimalMin(value = "0.0", inclusive = false, message = "Điểm tối đa phải lớn hơn 0")
 	private BigDecimal maxScore;
 }

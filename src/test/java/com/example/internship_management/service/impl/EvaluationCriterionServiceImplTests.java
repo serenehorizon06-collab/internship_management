@@ -33,13 +33,13 @@ class EvaluationCriterionServiceImplTests {
 				() -> evaluationCriterionService.createCriterion(request));
 
 		assertEquals(ErrorCode.INVALID_INPUT_DATA, exception.getErrorCode());
-		assertEquals("Äiá»ƒm tá»‘i Ä‘a pháº£i lá»›n hÆ¡n 0", exception.getMessage());
+		assertEquals("Điểm tối đa phải lớn hơn 0", exception.getMessage());
 	}
 
 	@Test
 	void createCriterionRejectsDuplicateCriterionName() {
 		CreateEvaluationCriterionRequest request = createRequest();
-		when(evaluationCriterionRepository.existsByCriterionName("ThĂ¡i Ä‘á»™ lĂ m viá»‡c")).thenReturn(true);
+		when(evaluationCriterionRepository.existsByCriterionName("Thái độ làm việc")).thenReturn(true);
 
 		DuplicateResourceException exception = assertThrows(
 				DuplicateResourceException.class,
@@ -52,7 +52,7 @@ class EvaluationCriterionServiceImplTests {
 	void updateCriterionRejectsDuplicateCriterionNameExcludingCurrentCriterion() {
 		UpdateEvaluationCriterionRequest request = updateRequest();
 		when(evaluationCriterionRepository.findById(1)).thenReturn(Optional.of(criterion(1)));
-		when(evaluationCriterionRepository.existsByCriterionNameAndCriterionIdNot("Kiáº¿n thá»©c chuyĂªn mĂ´n", 1))
+		when(evaluationCriterionRepository.existsByCriterionNameAndCriterionIdNot("Kiến thức chuyên môn", 1))
 				.thenReturn(true);
 
 		DuplicateResourceException exception = assertThrows(
@@ -75,16 +75,16 @@ class EvaluationCriterionServiceImplTests {
 
 	private CreateEvaluationCriterionRequest createRequest() {
 		CreateEvaluationCriterionRequest request = new CreateEvaluationCriterionRequest();
-		request.setCriterionName("ThĂ¡i Ä‘á»™ lĂ m viá»‡c");
-		request.setDescription("ÄĂ¡nh giĂ¡ thĂ¡i Ä‘á»™ vĂ  trĂ¡ch nhiá»‡m");
+		request.setCriterionName("Thái độ làm việc");
+		request.setDescription("Đánh giá thái độ và trách nhiệm");
 		request.setMaxScore(new BigDecimal("10.00"));
 		return request;
 	}
 
 	private UpdateEvaluationCriterionRequest updateRequest() {
 		UpdateEvaluationCriterionRequest request = new UpdateEvaluationCriterionRequest();
-		request.setCriterionName("Kiáº¿n thá»©c chuyĂªn mĂ´n");
-		request.setDescription("ÄĂ¡nh giĂ¡ kiáº¿n thá»©c chuyĂªn mĂ´n");
+		request.setCriterionName("Kiến thức chuyên môn");
+		request.setDescription("Đánh giá kiến thức chuyên môn");
 		request.setMaxScore(new BigDecimal("10.00"));
 		return request;
 	}
@@ -92,8 +92,8 @@ class EvaluationCriterionServiceImplTests {
 	private EvaluationCriterion criterion(Integer criterionId) {
 		EvaluationCriterion criterion = new EvaluationCriterion();
 		criterion.setCriterionId(criterionId);
-		criterion.setCriterionName("ThĂ¡i Ä‘á»™ lĂ m viá»‡c");
-		criterion.setDescription("ÄĂ¡nh giĂ¡ thĂ¡i Ä‘á»™ vĂ  trĂ¡ch nhiá»‡m");
+		criterion.setCriterionName("Thái độ làm việc");
+		criterion.setDescription("Đánh giá thái độ và trách nhiệm");
 		criterion.setMaxScore(new BigDecimal("10.00"));
 		return criterion;
 	}

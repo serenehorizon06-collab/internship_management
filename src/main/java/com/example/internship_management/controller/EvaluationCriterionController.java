@@ -29,7 +29,7 @@ public class EvaluationCriterionController {
 	@GetMapping
 	public ResponseEntity<ApiResponse<List<EvaluationCriterionResponse>>> getCriteria() {
 		return ResponseEntity.ok(ApiResponse.success(
-				"Láº¥y danh sĂ¡ch tiĂªu chĂ­ Ä‘Ă¡nh giĂ¡ thĂ nh cĂ´ng",
+				"Lấy danh sách tiêu chí đánh giá thành công",
 				evaluationCriterionService.getAllCriteria()));
 	}
 
@@ -37,7 +37,7 @@ public class EvaluationCriterionController {
 	public ResponseEntity<ApiResponse<EvaluationCriterionResponse>> getCriterionById(
 			@PathVariable("criterionId") Integer criterionId) {
 		return ResponseEntity.ok(ApiResponse.success(
-				"Láº¥y thĂ´ng tin tiĂªu chĂ­ Ä‘Ă¡nh giĂ¡ thĂ nh cĂ´ng",
+				"Lấy thông tin tiêu chí đánh giá thành công",
 				evaluationCriterionService.getCriterionById(criterionId)));
 	}
 
@@ -46,7 +46,7 @@ public class EvaluationCriterionController {
 			@Valid @RequestBody CreateEvaluationCriterionRequest request) {
 		return ResponseEntity.status(HttpStatus.CREATED)
 				.body(ApiResponse.created(
-						"Táº¡o tiĂªu chĂ­ Ä‘Ă¡nh giĂ¡ thĂ nh cĂ´ng",
+						"Tạo tiêu chí đánh giá thành công",
 						evaluationCriterionService.createCriterion(request)));
 	}
 
@@ -55,13 +55,13 @@ public class EvaluationCriterionController {
 			@PathVariable("criterionId") Integer criterionId,
 			@Valid @RequestBody UpdateEvaluationCriterionRequest request) {
 		return ResponseEntity.ok(ApiResponse.success(
-				"Cáº­p nháº­t tiĂªu chĂ­ Ä‘Ă¡nh giĂ¡ thĂ nh cĂ´ng",
+				"Cập nhật tiêu chí đánh giá thành công",
 				evaluationCriterionService.updateCriterion(criterionId, request)));
 	}
 
 	@DeleteMapping("/{criterionId}")
 	public ResponseEntity<ApiResponse<Void>> deleteCriterion(@PathVariable("criterionId") Integer criterionId) {
 		evaluationCriterionService.deleteCriterion(criterionId);
-		return ResponseEntity.ok(ApiResponse.<Void>success("XĂ³a tiĂªu chĂ­ Ä‘Ă¡nh giĂ¡ thĂ nh cĂ´ng", null));
+		return ResponseEntity.ok(ApiResponse.<Void>success("Xóa tiêu chí đánh giá thành công", null));
 	}
 }

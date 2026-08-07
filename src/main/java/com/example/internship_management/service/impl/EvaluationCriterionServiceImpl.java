@@ -73,24 +73,24 @@ public class EvaluationCriterionServiceImpl implements EvaluationCriterionServic
 
 	private EvaluationCriterion findCriterionById(Integer criterionId) {
 		return evaluationCriterionRepository.findById(criterionId)
-				.orElseThrow(() -> new ResourceNotFoundException("KhĂ´ng tĂ¬m tháº¥y tiĂªu chĂ­ Ä‘Ă¡nh giĂ¡"));
+				.orElseThrow(() -> new ResourceNotFoundException("Không tìm thấy tiêu chí đánh giá"));
 	}
 
 	private void validateNewCriterionName(String criterionName) {
 		if (evaluationCriterionRepository.existsByCriterionName(criterionName)) {
-			throw new DuplicateResourceException("TĂªn tiĂªu chĂ­ Ä‘Ă¡nh giĂ¡ Ä‘Ă£ tá»“n táº¡i");
+			throw new DuplicateResourceException("Tên tiêu chí đánh giá đã tồn tại");
 		}
 	}
 
 	private void validateCriterionNameForUpdate(String criterionName, Integer criterionId) {
 		if (evaluationCriterionRepository.existsByCriterionNameAndCriterionIdNot(criterionName, criterionId)) {
-			throw new DuplicateResourceException("TĂªn tiĂªu chĂ­ Ä‘Ă¡nh giĂ¡ Ä‘Ă£ tá»“n táº¡i");
+			throw new DuplicateResourceException("Tên tiêu chí đánh giá đã tồn tại");
 		}
 	}
 
 	private void validateMaxScore(BigDecimal maxScore) {
 		if (maxScore != null && maxScore.compareTo(BigDecimal.ZERO) <= 0) {
-			throw new InvalidInputException("Äiá»ƒm tá»‘i Ä‘a pháº£i lá»›n hÆ¡n 0");
+			throw new InvalidInputException("Điểm tối đa phải lớn hơn 0");
 		}
 	}
 }
