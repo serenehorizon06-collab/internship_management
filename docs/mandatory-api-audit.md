@@ -4,19 +4,22 @@
 
 Overall result: PARTIAL
 
-Test result: PASS
+Test result: PASS (`.\mvnw.cmd clean test`, 68 tests)
 
-Audited commit: `444c3f8 phase-09: implement evaluation criteria APIs`
+Audit date: 2026-08-17
+
+Audited base commit: `ccfb5d0`
 
 Audit scope: mandatory endpoints 1-27 only. APIs 28-44 are intentionally not implemented. Code audit and regression tests passed; overall is PARTIAL only because the real PostgreSQL smoke test was not verified in this environment.
 
 Repository checks:
 
-- Working tree before audit: clean.
+- Working tree before audit: the two mandatory audit docs were deleted locally; they were restored because this final audit requires them.
 - Phase commits 01-09 are present in git log.
 - Remote `origin` points to `https://github.com/serenehorizon06-collab/internship_management.git`.
 - No tracked `.env`, `.env.*`, `target/`, generated token, real secret, or database password file was found.
 - `application.yaml` uses environment variables for DB and JWT config; the committed JWT value is a local placeholder.
+- Removed unused optional `spring-boot-devtools` dependency from `pom.xml`; no source behavior changed.
 
 ## 2. Endpoint Coverage Table
 

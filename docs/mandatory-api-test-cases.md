@@ -6,6 +6,10 @@ This document covers the mandatory API scope, endpoints 1-27 only.
 
 Automated tests use MockMvc controller tests with mocked services plus existing service/serialization tests. They do not require a real PostgreSQL connection and do not use real JWT secrets, generated tokens, or database passwords.
 
+Latest automated result: PASS (`.\mvnw.cmd clean test`, 68 tests, 0 failures).
+
+DB smoke test status: NOT VERIFIED.
+
 Run all tests:
 
 ```powershell
